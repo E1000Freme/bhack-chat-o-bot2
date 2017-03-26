@@ -22,17 +22,17 @@ module.exports = {
 	}
 	else{
 	console.log(JSON.stringify(response, null, 2));
-
+	var msgReturn;
 	var genre = response.entities[0] ? response.entities[0].value : '';
 	if(genre !== ''){
 		api.getMovieByGenre(genre, function(data){
-			console.log(data);
-			var msgReturn;
 			try{
 				var movieNo = Math.floor(Math.random()*20);
 				var movie = data['results'][movieNo];
+				console.log(movie);
 				msgReturn = {
-					msg: movie['original_title'],
+					msg:response.output.text[0],
+					name: movie['original_title'],
 					over: movie['overview'],
 					vote_average: movie['vote_average'],
 					img: api.imageBaseURL + movie['poster_path']
@@ -44,6 +44,11 @@ module.exports = {
 			}
 			callback(msgReturn);
 		});
+	}else{
+		msgReturn = {
+			msg: response.output.text[0]
+		};
+		callback(msgReturn);
 	}
 
 
