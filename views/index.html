@@ -1,0 +1,87 @@
+<!doctype html>
+  <html>
+   <head>
+    <title>Chat Application</title>
+    <link rel='stylesheet' href='style.css' type='text/css'/>
+    <style type="text/css">
+
+    </style>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans" rel="stylesheet">
+    <script src="chat.js"></script>
+  </head>
+  <body>
+    <div id="messagesWrapper">
+    <ul id="messages"></ul>
+    <span id="notifyUser"></span>
+    </div>
+    <form id="form"  action="">
+      <input type="hidden" id="user" value="" /><input id="m" autocomplete="off" name = "msg" placeholder="Type yor message here.." /><input type="button" id="button" value="Send"/>
+    </form>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $.ajax({
+            type: 'post',
+            url: '/msg',
+            data: $('form').serialize(),
+            success: function (data) {
+              console.log(data['msg']);
+              appendResponse(data);
+            }
+          });
+        });
+
+        window.setInterval(function(){
+            window.scrollTo(0,document.body.scrollHeight);
+        }, 500);
+
+      $(function () {
+
+        $('form').on('submit', function (e) {
+
+          e.preventDefault();
+
+
+        $("#messages").append('<li><span class="user">'+$('#m').val()+'</span></li>');
+          $.ajax({
+            type: 'post',
+            url: '/msg',
+            data: $('form').serialize(),
+            success: function (data) {
+              console.log(data['msg']);
+              appendResponse(data);
+            }
+          });
+          $('#m').val('');
+        });
+
+      });
+
+
+      function appendResponse(data){
+        var stars = "";
+        if(data['vote_average'] !== undefined){
+            for (var i = 0 ; i < Math.floor(data['vote_average']/2); i++) {
+                stars = stars + "&#9733;";
+            }
+        }
+        var toAppend = "<li><span class='bot'>"+ data['msg'] + " <br> "
+
+            if(data['name'] !== undefined ){
+                toAppend = toAppend + data['name'] + " | " + stars;
+            }
+            if(data['over'] !== undefined){
+                toAppend = toAppend + '<p class="over">Overview:<br>' + data['over'] + '</p>'
+              }
+            if(data['img'] !== undefined){
+                toAppend = toAppend + '<img src="'+data['img']+'"/>';
+              }
+            toAppend = toAppend + '</span><div class="clearfix"></div></li>';
+            $('#messages').append(toAppend);
+            //window.scrollTo(0,document.body.scrollHeight);
+      }
+    </script>
+  </body>
+</html>
