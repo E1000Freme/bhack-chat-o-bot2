@@ -39,14 +39,17 @@ module.exports = {
 				};
 			}catch(error){
 				msgReturn = {
-					msg: response.output.text[0]
+					msg: response.output.text[0] !== undefined ? response.output.text[0] : "Ops! Sorry about this, my positronic brain is sad now",
+					img: response.output.text[0] !== undefined ? '' : "https://cdn.meme.am/cache/images/folder809/12137809.jpg"
 				};
 			}
 			callback(msgReturn);
 		});
 	}else{
 		msgReturn = {
-			msg: response.output.text[0]
+			msg: response.output.text[0] !== undefined ? response.output.text[0] : "Ops! Sorry about this, my positronic brain is sad now",
+			img: response.output.text[0] !== undefined ? undefined : "https://cdn.meme.am/cache/images/folder809/12137809.jpg"
+
 		};
 		callback(msgReturn);
 	}

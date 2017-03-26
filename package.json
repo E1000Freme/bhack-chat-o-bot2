@@ -4,9 +4,8 @@
   "decription": "A Chatbot for movie recomendations that will learn from your conversations",
   "dependencies": {
     "express": "^4.15.2",
-    "body-parser":"^1.16.0",
-    "watson-developer-cloud":"2.27.1"
-
+    "body-parser": "^1.16.0",
+    "watson-developer-cloud": "2.27.1"
   },
   "description": "A Chatbot for movie recomendations that will learn from your conversations",
   "main": "index.js",
@@ -20,6 +19,14 @@
     "movies",
     "bluemix"
   ],
-  "author": "",
-  "license": "ISC"
+  "author": "Pedro Freme, Akira Hasuda, Camila Henrique dos Santos, Abner Ferreira",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ero-Radio/bhack-chat-o-bot2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ero-Radio/bhack-chat-o-bot2/issues"
+  },
+  "homepage": "https://github.com/Ero-Radio/bhack-chat-o-bot2#readme"
 }

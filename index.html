@@ -21,6 +21,22 @@
     </form>
 
     <script type="text/javascript">
+        $(document).ready(function(){
+            $.ajax({
+            type: 'post',
+            url: '/msg',
+            data: $('form').serialize(),
+            success: function (data) {
+              console.log(data['msg']);
+              appendResponse(data);
+            }
+          });
+        });
+
+        window.setInterval(function(){
+            window.scrollTo(0,document.body.scrollHeight);
+        }, 500);
+
       $(function () {
 
         $('form').on('submit', function (e) {
@@ -29,7 +45,6 @@
 
 
         $("#messages").append('<li><span class="user">'+$('#m').val()+'</span></li>');
-
           $.ajax({
             type: 'post',
             url: '/msg',
@@ -37,7 +52,6 @@
             success: function (data) {
               console.log(data['msg']);
               appendResponse(data);
-                $('html, body').scrollTop( $(document).height() - $(window).height() );
             }
           });
           $('#m').val('');
@@ -66,6 +80,7 @@
               }
             toAppend = toAppend + '</span><div class="clearfix"></div></li>';
             $('#messages').append(toAppend);
+            //window.scrollTo(0,document.body.scrollHeight);
       }
     </script>
   </body>
