@@ -1,0 +1,25 @@
+{
+  "name": "chat-o-bot",
+  "version": "0.2.0",
+  "decription": "A Chatbot for movie recomendations that will learn from your conversations",
+  "dependencies": {
+    "express": "^4.15.2",
+    "body-parser":"^1.16.0",
+    "watson-developer-cloud":"2.27.1"
+
+  },
+  "description": "A Chatbot for movie recomendations that will learn from your conversations",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "chatbot",
+    "blueahack",
+    "movies",
+    "bluemix"
+  ],
+  "author": "",
+  "license": "ISC"
+}

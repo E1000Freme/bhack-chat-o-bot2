@@ -1,0 +1,49 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+* body { font: 13px Helvetica, Arial; }
+* form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+* form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+* form #button { color:#FFF; background: #2D9F0B; border: none; padding: 10px;  width: 9%; }
+* #messages { list-style-type: none; margin: 0; padding: 0; }
+* #messages li { padding: 5px 10px; display: block; overflow:auto;}
+/** #messages li:nth-child(odd) { background: #eee; }*/
+* #notifyUser { position: fixed; bottom: 42px; width: 100%; }
+
+        body{
+            background: #225378;
+        }
+        #messagesWrapper{
+        	margin-bottom: 50px;
+        }
+        .user{
+            float:right;
+            min-width: 300px;
+            max-width: 500px;
+            padding: 30px;
+            margin: 5px 30px;
+            border-radius: 10px;
+            background-color: #F3FFE2;
+        }
+        .bot{
+            float:left;
+            min-width: 300px;
+            max-width: 500px;
+            padding: 30px;
+            margin: 10px 30px;
+            border-radius: 10px;
+            background-color: #ACF0F2;
+        }
+        .user img, .bot img{
+            width:400px;
+            padding: 0;
+            margin: 0 auto;
+        }
+        .user, .bot {
+        	font-family: 'Merriweather Sans', sans-serif;
+        	font-size: 14px;
+        }
+        .over{
+        	border-left: 3px #ccc solid;
+        	padding: 5px;
+        	margin: 5px;
+        	color: #333;
+        }
